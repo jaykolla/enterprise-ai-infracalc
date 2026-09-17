@@ -80,6 +80,23 @@ npx serve netlify_deploy
 
 ---
 
+## Enabling the AI Assistant
+
+The AI Assistant runs entirely client-side and needs no backend, but it is gated and requires your own API key. To get the chat working:
+
+1. **Open the AI Assistant** panel from the sidebar.
+2. **Enter the access code** at the "Access Code Required" gate and click **Unlock Chat**. The code is `INFRACALC`. Your unlock is remembered in the browser (`localStorage`), so you only do this once per browser.
+3. **Get a free Cerebras API key** — sign up at [cerebras.ai](https://cerebras.ai) and create a key. It starts with `csk-`.
+4. **Paste the key** into the API-key field in the chat. It is stored only in your browser's `localStorage` (`or_user_key`) and sent directly to Cerebras — it never touches a server of ours.
+5. **Start chatting.** Requests go to `https://api.cerebras.ai/v1/chat/completions` using the `gpt-oss-120b` model.
+
+**Notes**
+- The key lives only in your browser. Clearing site data or using a different browser/device requires re-entering it.
+- If you hit a rate limit or a 401, the assistant will prompt you to re-enter a valid key.
+- The assistant is an explainer for the calculator's results and methodology — not a general-purpose chatbot.
+
+---
+
 ## Deploying to Netlify
 
 ```bash
